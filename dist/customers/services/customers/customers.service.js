@@ -10,25 +10,31 @@ exports.CustomersService = void 0;
 const common_1 = require("@nestjs/common");
 let CustomersService = class CustomersService {
     constructor() {
-        this.users = [{
+        this.customers = [{
                 id: 1,
                 email: "johnny@gmail.com",
-                createdAt: new Date(),
+                name: "John",
             },
             {
                 id: 2,
                 email: "dohnny@gmail.com",
-                createdAt: new Date(),
+                name: "Dohn",
             },
             {
                 id: 3,
                 email: "bohnny@gmail.com",
-                createdAt: new Date(),
+                name: "Bohn",
             },
         ];
     }
     findCustomerById(id) {
-        return this.users.find((user) => user.id === id);
+        return this.customers.find((user) => user.id === id);
+    }
+    createCustomer(customerDto) {
+        this.customers.push(customerDto);
+    }
+    getCustomers() {
+        return this.customers;
     }
 };
 CustomersService = __decorate([

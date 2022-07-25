@@ -1,12 +1,19 @@
+import { CreateCustomerDto } from 'src/customers/dtos/CreateCustomer.dto';
 export declare class CustomersService {
-    users: {
+    customers: {
         id: number;
         email: string;
-        createdAt: Date;
+        name: string;
     }[];
     findCustomerById(id: number): {
         id: number;
         email: string;
-        createdAt: Date;
+        name: string;
     };
+    createCustomer(customerDto: CreateCustomerDto): void;
+    getCustomers(): {
+        id: number;
+        email: string;
+        name: string;
+    }[];
 }
