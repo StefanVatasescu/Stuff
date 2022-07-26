@@ -1,6 +1,6 @@
-import { User } from '../../types/User';
+import { SerializedUser, User } from '../../types';
 export declare class UsersService {
     private users;
-    getUsers(): User[];
+    getUsers(): SerializedUser[];
     getUserByUsername(username: string): User;
 }

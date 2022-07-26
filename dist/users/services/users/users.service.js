@@ -8,6 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersService = void 0;
 const common_1 = require("@nestjs/common");
+const class_transformer_1 = require("class-transformer");
+const types_1 = require("../../types");
 let UsersService = class UsersService {
     constructor() {
         this.users = [
@@ -30,7 +32,7 @@ let UsersService = class UsersService {
         ];
     }
     getUsers() {
-        return this.users;
+        return this.users.map((user) => (0, class_transformer_1.plainToClass)(types_1.SerializedUser, user));
     }
     getUserByUsername(username) {
         return this.users.find((user) => user.username === username);
