@@ -8,10 +8,26 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CustomersModule = void 0;
 const common_1 = require("@nestjs/common");
+const customers_controller_1 = require("./controllers/customers/customers.controller");
+const validate_customer_middleware_1 = require("./middlewares/validate-customer.middleware");
+const customers_service_1 = require("./services/customers/customers.service");
 let CustomersModule = class CustomersModule {
+    configure(consumer) {
+        consumer.apply(validate_customer_middleware_1.ValidateCustomerMiddleware).exclude({
+            path: 'customers/create',
+            method: common_1.RequestMethod.POST,
+        }, {
+            path: 'customers',
+            method: common_1.RequestMethod.GET,
+        })
+            .forRoutes(customers_controller_1.CustomersController);
+    }
 };
 CustomersModule = __decorate([
-    (0, common_1.Module)({})
+    (0, common_1.Module)({
+        controllers: [customers_controller_1.CustomersController],
+        providers: [customers_service_1.CustomersService]
+    })
 ], CustomersModule);
 exports.CustomersModule = CustomersModule;
 //# sourceMappingURL=customers.module.js.map

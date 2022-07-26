@@ -41,7 +41,6 @@ let CustomersController = class CustomersController {
             throw new common_1.HttpException('Customer Not Found', common_1.HttpStatus.BAD_REQUEST);
     }
     createCustomer(createCustomerDto) {
-        console.log(createCustomerDto);
         this.customersService.createCustomer(createCustomerDto);
     }
 };

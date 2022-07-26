@@ -1,4 +1,5 @@
 import { NestMiddleware } from "@nestjs/common";
+import { NextFunction, Request } from "express";
 export declare class ValidateCustomerMiddleware implements NestMiddleware {
-    use(req: any, res: any, next: (error?: any) => void): void;
+    use(req: Request, res: Request, next: NextFunction): any;
 }
