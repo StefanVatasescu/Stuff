@@ -29,7 +29,7 @@ __decorate([
     __metadata("design:type", String)
 ], CreateCustomerDto.prototype, "name", void 0);
 __decorate([
-    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.IsNotEmptyObject)(),
     (0, class_validator_1.ValidateNested)(),
     (0, class_transformer_1.Type)(() => CreateAddress_dto_1.CreateAddressDto),
     __metadata("design:type", CreateAddress_dto_1.CreateAddressDto)

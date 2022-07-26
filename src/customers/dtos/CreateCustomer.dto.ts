@@ -1,5 +1,5 @@
 import { Type } from "class-transformer";
-import { IsEmail, IsNotEmpty, IsNumber, IsNumberString, IsString, ValidateNested } from "class-validator";
+import { IsEmail, IsNotEmpty, IsNotEmptyObject, IsNumber, IsNumberString, IsString, ValidateNested } from "class-validator";
 import { CreateAddressDto } from "./CreateAddress.dto";
 
 export class CreateCustomerDto {
@@ -14,8 +14,8 @@ export class CreateCustomerDto {
     @IsNotEmpty()
     name : string;
 
-    @IsNotEmpty()
+    @IsNotEmptyObject()
     @ValidateNested()
     @Type(() => CreateAddressDto)
     address : CreateAddressDto;
-}
+} 
