@@ -13,18 +13,22 @@ let UsersService = class UsersService {
     constructor() {
         this.users = [
             {
+                id: 1,
                 username: 'andy',
                 password: 'andy',
             },
             {
+                id: 2,
                 username: 'bandy',
                 password: 'bandy',
             },
             {
+                id: 3,
                 username: 'candy',
                 password: 'candy',
             },
             {
+                id: 4,
                 username: 'dandy',
                 password: 'dandy',
             },
