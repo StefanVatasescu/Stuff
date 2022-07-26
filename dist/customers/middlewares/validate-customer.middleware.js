@@ -12,11 +12,18 @@ let ValidateCustomerMiddleware = class ValidateCustomerMiddleware {
     use(req, res, next) {
         console.log('Hello, World! I am inside ValidateCustomerMiddleware!!!');
         const { authorization } = req.headers;
+        console.log('ValidateCustomerMiddleware');
         if (!authorization)
             return res
                 .status(403)
-                .send({ error: 'No Authentification TOken Provided' });
-        next();
+                .send({ error: 'No Authentification Token Provided' });
+        if (authorization === '123')
+            next();
+        else {
+            return res
+                .status(403)
+                .send({ error: 'No Valid Authentification Token Provided' });
+        }
     }
 };
 ValidateCustomerMiddleware = __decorate([

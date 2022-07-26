@@ -9,11 +9,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CustomersModule = void 0;
 const common_1 = require("@nestjs/common");
 const customers_controller_1 = require("./controllers/customers/customers.controller");
+const validate_customer_account_middleware_1 = require("./middlewares/validate-customer-account.middleware");
 const validate_customer_middleware_1 = require("./middlewares/validate-customer.middleware");
 const customers_service_1 = require("./services/customers/customers.service");
 let CustomersModule = class CustomersModule {
     configure(consumer) {
-        consumer.apply(validate_customer_middleware_1.ValidateCustomerMiddleware).exclude({
+        consumer.apply(validate_customer_middleware_1.ValidateCustomerMiddleware, validate_customer_account_middleware_1.ValidateCustomerAccountMiddleware, (req, res, next) => {
+            console.log('Last Middleware');
+            next();
+        }).exclude({
             path: 'customers/create',
             method: common_1.RequestMethod.POST,
         }, {
