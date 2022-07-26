@@ -5,4 +5,5 @@ export interface User {
 export declare class SerializedUser {
     username: string;
     password: string;
+    constructor(partial: Partial<SerializedUser>);
 }

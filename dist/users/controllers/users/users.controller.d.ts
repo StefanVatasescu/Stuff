@@ -1,7 +1,8 @@
 import { UsersService } from 'src/users/services/users/users.service';
+import { SerializedUser } from 'src/users/types';
 export declare class UsersController {
     private readonly userService;
     constructor(userService: UsersService);
-    getUsers(): import("../../types").SerializedUser[];
-    getByUsername(username: string): void;
+    getUsers(): SerializedUser[];
+    getByUsername(username: string): SerializedUser;
 }

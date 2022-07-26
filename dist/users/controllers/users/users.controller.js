@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersController = void 0;
 const common_1 = require("@nestjs/common");
 const users_service_1 = require("../../services/users/users.service");
+const types_1 = require("../../types");
 let UsersController = class UsersController {
     constructor(userService) {
         this.userService = userService;
@@ -24,15 +25,21 @@ let UsersController = class UsersController {
     }
     getByUsername(username) {
         const user = this.userService.getUserByUsername(username);
+        if (user)
+            return new types_1.SerializedUser(user);
+        else
+            throw new common_1.HttpException('User not found', common_1.HttpStatus.BAD_REQUEST);
     }
 };
 __decorate([
+    (0, common_1.UseInterceptors)(common_1.ClassSerializerInterceptor),
     (0, common_1.Get)(''),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "getUsers", null);
 __decorate([
+    (0, common_1.UseInterceptors)(common_1.ClassSerializerInterceptor),
     (0, common_1.Get)('/:username'),
     __param(0, (0, common_1.Param)('username')),
     __metadata("design:type", Function),

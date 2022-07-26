@@ -12,6 +12,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SerializedUser = void 0;
 const class_transformer_1 = require("class-transformer");
 class SerializedUser {
+    constructor(partial) {
+        Object.assign(this, partial);
+    }
 }
 __decorate([
     (0, class_transformer_1.Exclude)(),
