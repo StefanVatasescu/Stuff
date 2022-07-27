@@ -11,6 +11,7 @@ import { UsersService } from './services/users/users.service';
     provide: 'USER_SERVICE',
     useClass: UsersService
   },
-],
+  ],
+  exports:[TypeOrmModule],
 })
 export class UsersModule {}

@@ -19,7 +19,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
             nullable: false,
             default: '',
         })
-        emailAddress: string;
+        email: string;
 
         @Column({
             nullable: false,
