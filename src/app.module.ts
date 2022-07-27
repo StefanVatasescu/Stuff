@@ -4,6 +4,7 @@ import { CustomersService } from './customers/services/customers/customers.servi
 import { UsersModule } from './users/users.module';
 import { CustomersModule } from './customers/customers.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { User } from './typeorm';
 @Module({
   imports: [UsersModule, CustomersModule, TypeOrmModule.forRoot({
     type: 'postgres',
@@ -12,6 +13,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     username: 'caviboxuser',
     password: 'parolapguser',
     database: 'test',
+    entities: [User],
     synchronize: true
   })],
   controllers: [CustomersController],

@@ -13,6 +13,7 @@ const customers_service_1 = require("./customers/services/customers/customers.se
 const users_module_1 = require("./users/users.module");
 const customers_module_1 = require("./customers/customers.module");
 const typeorm_1 = require("@nestjs/typeorm");
+const typeorm_2 = require("./typeorm");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -24,6 +25,7 @@ AppModule = __decorate([
                 username: 'caviboxuser',
                 password: 'parolapguser',
                 database: 'test',
+                entities: [typeorm_2.User],
                 synchronize: true
             })],
         controllers: [customers_controller_1.CustomersController],
