@@ -14,6 +14,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersController = void 0;
 const common_1 = require("@nestjs/common");
+const CreateUser_dto_1 = require("../../dtos/CreateUser.dto");
 const UserNotFound_exceptions_1 = require("../../exceptions/UserNotFound,exceptions");
 const HttpException_filter_1 = require("../../filters/HttpException.filter");
 const users_service_1 = require("../../services/users/users.service");
@@ -40,6 +41,8 @@ let UsersController = class UsersController {
             throw new UserNotFound_exceptions_1.UserNotFoundException();
         }
     }
+    createUser(createUserDto) {
+    }
 };
 __decorate([
     (0, common_1.UseInterceptors)(common_1.ClassSerializerInterceptor),
@@ -65,6 +68,14 @@ __decorate([
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "getById", null);
+__decorate([
+    (0, common_1.Post)('create'),
+    (0, common_1.UsePipes)(common_1.ValidationPipe),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [CreateUser_dto_1.CreateUserDto]),
+    __metadata("design:returntype", void 0)
+], UsersController.prototype, "createUser", null);
 UsersController = __decorate([
     (0, common_1.Controller)('users'),
     __param(0, (0, common_1.Inject)('USER_SERVICE')),

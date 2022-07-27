@@ -1,31 +1,18 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
 import { plainToClass } from 'class-transformer';
+import { CreateUserDto } from 'src/users/dtos/CreateUser.dto';
+import { Repository } from 'typeorm';
 import { SerializedUser, User } from '../../types';
 
 @Injectable()
 export class UsersService {
-    private users: User[] = [
-    {
-        id : 1,
-        username : 'andy',
-        password: 'andy',
-    },
-    {
-        id : 2,
-        username : 'bandy',
-        password: 'bandy',
-    },
-    {
-        id : 3,
-        username : 'candy',
-        password: 'candy',
-    },
-    {
-        id : 4,
-        username : 'dandy',
-        password: 'dandy',
-    },
-    ];
+
+    constructor(@InjectRepository(UserEntity) private readonly userRepository: Repository<UserEntity>,){
+
+    }
+
+    private users: User[] = [];
 
     getUsers(){
         return this.users.map((user) =>  new SerializedUser(user));
@@ -37,5 +24,9 @@ export class UsersService {
 
     getUserById(id: number) {
         return this.users.find((user) => user.id === id);
+    }
+
+    createUser(createUserDto: CreateUserDto) {
+
     }
 }

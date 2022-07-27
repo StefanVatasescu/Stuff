@@ -1,4 +1,5 @@
-import { ClassSerializerInterceptor, Controller, Get, HttpException, HttpStatus, Inject, Param, ParseIntPipe, UseFilters, UseInterceptors } from '@nestjs/common';
+import { Body, ClassSerializerInterceptor, Controller, Get, HttpException, HttpStatus, Inject, Param, ParseIntPipe, Post, UseFilters, UseInterceptors, UsePipes, ValidationPipe } from '@nestjs/common';
+import { CreateUserDto } from 'src/users/dtos/CreateUser.dto';
 import { UserNotFoundException } from 'src/users/exceptions/UserNotFound,exceptions';
 import { HttpExceptionFIlter } from 'src/users/filters/HttpException.filter';
 import { UsersService } from 'src/users/services/users/users.service';
@@ -33,5 +34,11 @@ export class UsersController {
         else {
             throw new UserNotFoundException();
         }
+    }
+
+    @Post('create')
+    @UsePipes(ValidationPipe)
+    createUser(@Body() createUserDto: CreateUserDto) {
+
     }
 }

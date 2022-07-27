@@ -1,3 +1,4 @@
+import { CreateUserDto } from 'src/users/dtos/CreateUser.dto';
 import { UsersService } from 'src/users/services/users/users.service';
 import { SerializedUser } from 'src/users/types';
 export declare class UsersController {
@@ -6,4 +7,5 @@ export declare class UsersController {
     getUsers(): SerializedUser[];
     getByUsername(username: string): SerializedUser;
     getById(userid: number): SerializedUser;
+    createUser(createUserDto: CreateUserDto): void;
 }
