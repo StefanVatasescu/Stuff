@@ -7,5 +7,5 @@ export declare class UsersController {
     getUsers(): SerializedUser[];
     getByUsername(username: string): SerializedUser;
     getById(userid: number): SerializedUser;
-    createUser(createUserDto: CreateUserDto): void;
+    createUser(createUserDto: CreateUserDto): Promise<import("../../../typeorm").User>;
 }

@@ -42,6 +42,7 @@ let UsersController = class UsersController {
         }
     }
     createUser(createUserDto) {
+        return this.userService.createUser(createUserDto);
     }
 };
 __decorate([
