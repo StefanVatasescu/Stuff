@@ -12,11 +12,20 @@ const customers_controller_1 = require("./customers/controllers/customers/custom
 const customers_service_1 = require("./customers/services/customers/customers.service");
 const users_module_1 = require("./users/users.module");
 const customers_module_1 = require("./customers/customers.module");
+const typeorm_1 = require("@nestjs/typeorm");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [users_module_1.UsersModule, customers_module_1.CustomersModule],
+        imports: [users_module_1.UsersModule, customers_module_1.CustomersModule, typeorm_1.TypeOrmModule.forRoot({
+                type: 'postgres',
+                host: '217.148.143.37',
+                port: 15432,
+                username: 'caviboxuser',
+                password: 'parolapguser',
+                database: 'test',
+                synchronize: true
+            })],
         controllers: [customers_controller_1.CustomersController],
         providers: [customers_service_1.CustomersService],
     })
