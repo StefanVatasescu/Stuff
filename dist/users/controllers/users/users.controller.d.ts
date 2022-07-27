@@ -5,4 +5,5 @@ export declare class UsersController {
     constructor(userService: UsersService);
     getUsers(): SerializedUser[];
     getByUsername(username: string): SerializedUser;
+    getById(userid: number): SerializedUser;
 }

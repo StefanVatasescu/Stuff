@@ -14,6 +14,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersController = void 0;
 const common_1 = require("@nestjs/common");
+const UserNotFound_exceptions_1 = require("../../exceptions/UserNotFound,exceptions");
 const users_service_1 = require("../../services/users/users.service");
 const types_1 = require("../../types");
 let UsersController = class UsersController {
@@ -30,6 +31,14 @@ let UsersController = class UsersController {
         else
             throw new common_1.HttpException('User not found', common_1.HttpStatus.BAD_REQUEST);
     }
+    getById(userid) {
+        const user = this.userService.getUserById(userid);
+        if (user)
+            return new types_1.SerializedUser(user);
+        else {
+            throw new UserNotFound_exceptions_1.UserNotFoundException();
+        }
+    }
 };
 __decorate([
     (0, common_1.UseInterceptors)(common_1.ClassSerializerInterceptor),
@@ -40,12 +49,21 @@ __decorate([
 ], UsersController.prototype, "getUsers", null);
 __decorate([
     (0, common_1.UseInterceptors)(common_1.ClassSerializerInterceptor),
-    (0, common_1.Get)('/:username'),
+    (0, common_1.Get)('username/:username'),
     __param(0, (0, common_1.Param)('username')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "getByUsername", null);
+__decorate([
+    (0, common_1.UseInterceptors)(common_1.ClassSerializerInterceptor),
+    (0, common_1.UseFilters)(common_1.HttpException),
+    (0, common_1.Get)('userid/:userid'),
+    __param(0, (0, common_1.Param)('userid', common_1.ParseIntPipe)),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], UsersController.prototype, "getById", null);
 UsersController = __decorate([
     (0, common_1.Controller)('users'),
     __param(0, (0, common_1.Inject)('USER_SERVICE')),

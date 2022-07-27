@@ -34,4 +34,8 @@ export class UsersService {
     getUserByUsername(username: string) {
         return this.users.find((user) => user.username === username);
     }
+
+    getUserById(id: number) {
+        return this.users.find((user) => user.id === id);
+    }
 }

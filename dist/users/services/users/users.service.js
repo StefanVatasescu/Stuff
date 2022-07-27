@@ -40,6 +40,9 @@ let UsersService = class UsersService {
     getUserByUsername(username) {
         return this.users.find((user) => user.username === username);
     }
+    getUserById(id) {
+        return this.users.find((user) => user.id === id);
+    }
 };
 UsersService = __decorate([
     (0, common_1.Injectable)()
