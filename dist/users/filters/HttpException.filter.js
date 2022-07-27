@@ -7,7 +7,6 @@ class HttpExceptionFIlter {
         console.log(exception.getStatus());
         console.log(exception);
         const context = host.switchToHttp();
-        const Request = context.getRequest();
         const response = context.getResponse();
         response.sendStatus(exception.getStatus());
     }

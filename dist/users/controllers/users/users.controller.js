@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersController = void 0;
 const common_1 = require("@nestjs/common");
 const UserNotFound_exceptions_1 = require("../../exceptions/UserNotFound,exceptions");
+const HttpException_filter_1 = require("../../filters/HttpException.filter");
 const users_service_1 = require("../../services/users/users.service");
 const types_1 = require("../../types");
 let UsersController = class UsersController {
@@ -57,7 +58,7 @@ __decorate([
 ], UsersController.prototype, "getByUsername", null);
 __decorate([
     (0, common_1.UseInterceptors)(common_1.ClassSerializerInterceptor),
-    (0, common_1.UseFilters)(common_1.HttpException),
+    (0, common_1.UseFilters)(HttpException_filter_1.HttpExceptionFIlter),
     (0, common_1.Get)('userid/:userid'),
     __param(0, (0, common_1.Param)('userid', common_1.ParseIntPipe)),
     __metadata("design:type", Function),
